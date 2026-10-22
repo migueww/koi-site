@@ -1,0 +1,248 @@
+{
+  "_doc": "Falas do koi (docs/03-marca.md, Variação e personalização). Cada momento é um banco: o seletor (CopySelector.kt) não repete nos últimos 7 dias e, com o banco esgotado, volta à usada há mais tempo. Variáveis entre chaves; 'when' limita a variação a um contexto (daypart: madrugada|manha|tarde|noite, app: instagram|youtube, weekend: true|false); 'weight' muda a chance (raridades ~0,05). schema: o formato; version: sobe a cada mudança. Cópia igual em docs/copy/, publicada no site (tools/publish_site.sh); o app baixa de lá e usa se a version for maior que a embutida (RemoteCopy.kt). Arcos da sessão longa: todo orb.arc.<nome>.1 a .4.",
+  "schema": 1,
+  "version": 3,
+  "moments": {
+    "prompt.title.tab": [
+      { "id": "tab1", "text": "Vai ver {videos} agora?" },
+      { "id": "tab2", "text": "Entrar nos {videos}?" },
+      { "id": "tab3", "text": "Bora rolar {videos}?" },
+      { "id": "tab4", "text": "Só uns {videos} rapidinho?" },
+      { "id": "tab5", "text": "{videos} agora mesmo?" },
+      { "id": "tab6", "text": "Tem certeza que é hora de {videos}?" },
+      { "id": "tab7", "text": "O feed tá logo ali. Vai?" },
+      { "id": "tab8", "text": "Era isso que você veio fazer?" },
+      { "id": "tab9", "text": "Abriu os {videos}. Foi de propósito?" },
+      { "id": "tab10", "text": "Nem tirou o café da mesa e já {videos}?", "when": { "daypart": ["manha"] } },
+      { "id": "tab11", "text": "{videos} de madrugada?", "when": { "daypart": [ "madrugada" ] } },
+      { "id": "tab12", "text": "Shorts antes de dormir?", "when": { "daypart": ["noite", "madrugada"], "app": "youtube" } },
+      { "id": "tab13", "text": "Domingo pede reels, né?", "when": { "weekend": true, "app": "instagram" } },
+      { "id": "tab14", "text": "O koi fingiu que não viu. Vai mesmo?", "weight": 0.05 }
+    ],
+    "prompt.title.dm": [
+      { "id": "dm1", "text": "Esse era o reel que te mandaram. Continuar no feed?" },
+      { "id": "dm2", "text": "O reel da conversa acabou. Seguir rolando?" },
+      { "id": "dm3", "text": "Você veio pelo reel do amigo. Fica pro feed?" },
+      { "id": "dm4", "text": "Viu o que te mandaram. E agora?" },
+      { "id": "dm5", "text": "O reel da DM era esse. O resto é feed." },
+      { "id": "dm6", "text": "Respondeu o amigo? Ou vai rolar?" },
+      { "id": "dm7", "text": "Daqui pra frente é o algoritmo escolhendo. Segue?" },
+      { "id": "dm8", "text": "Reel visto. Voltar pra conversa?" },
+      { "id": "dm9", "text": "O amigo mandou um. O feed quer mandar mil." }
+    ],
+    "prompt.title.video": [
+      { "id": "vid1", "text": "Esse era o vídeo que você abriu. Continuar rolando?" },
+      { "id": "vid2", "text": "Você viu o que veio ver. Mais?" },
+      { "id": "vid3", "text": "Um vídeo foi escolha sua. O próximo é do algoritmo." },
+      { "id": "vid4", "text": "Daqui pra frente é feed. Segue?" },
+      { "id": "vid5", "text": "Abriu um. Vai rolar mais?" },
+      { "id": "vid6", "text": "Era só esse ou era o começo de um monte?" },
+      { "id": "vid7", "text": "O vídeo que você queria já passou. Continua?" },
+      { "id": "vid8", "text": "Rolou pro próximo. Foi sem querer?" },
+      { "id": "vid9", "text": "Esse não era o que você abriu. Fica?" }
+    ],
+    "prompt.title.insist": [
+      { "id": "ins1", "text": "É a {nth} vez hoje. Ainda quer?" },
+      { "id": "ins2", "text": "{nth} vez hoje. Tem certeza?" },
+      { "id": "ins3", "text": "De novo? É a {nth}." },
+      { "id": "ins4", "text": "{nth} tentativa. O koi contou." },
+      { "id": "ins5", "text": "Voltou. Pela {nth} vez." },
+      { "id": "ins6", "text": "O feed te chamou de novo, né?" },
+      { "id": "ins7", "text": "Mais uma? Essa é a {nth}." },
+      { "id": "ins8", "text": "O koi já tá reconhecendo seu dedo." },
+      { "id": "ins9", "text": "{nth} vez. O koi pegou um banquinho." },
+      { "id": "ins10", "text": "{nth} vez hoje. A madrugada tá longa.", "when": { "daypart": [ "madrugada" ] } },
+      { "id": "ins11", "text": "O koi tá começando a achar que é pessoal.", "weight": 0.05 }
+    ],
+    "prompt.title.expiry": [
+      { "id": "exp1", "text": "Seus {m} min acabaram." },
+      { "id": "exp2", "text": "Deu {m} min." },
+      { "id": "exp3", "text": "Os {m} min passaram." },
+      { "id": "exp4", "text": "Tempo! Foram {m} min." },
+      { "id": "exp5", "text": "Acabou o combinado." },
+      { "id": "exp6", "text": "{m} min depois, cá estamos." },
+      { "id": "exp7", "text": "O relógio do koi apitou." },
+      { "id": "exp8", "text": "Fim dos {m} min. Como foi?" }
+    ],
+    "prompt.context.l1": [
+      { "id": "c1a", "text": "Hoje: {reels} {videos} · {min} min" },
+      { "id": "c1b", "text": "{reels} {videos} até agora, {min} min no feed." },
+      { "id": "c1c", "text": "Placar de hoje: {reels} {videos}." },
+      { "id": "c1d", "text": "Hoje foram {reels} {videos} em {min} min." },
+      { "id": "c1e", "text": "{min} min de feed hoje. Nada mal." },
+      { "id": "c1f", "text": "Contando: {reels} {videos} hoje." },
+      { "id": "c1g", "text": "O dia tá em {reels} {videos}." },
+      { "id": "c1h", "text": "{reels} hoje. O koi tá de boa." }
+    ],
+    "prompt.context.l2": [
+      { "id": "c2a", "text": "{nth} vez hoje · {reels} {videos} · {min} min" },
+      { "id": "c2b", "text": "{nth} vez que você chega aqui hoje." },
+      { "id": "c2c", "text": "Já são {reels} {videos} e {min} min hoje." },
+      { "id": "c2d", "text": "{nth} visita ao feed. {reels} {videos} no total." },
+      { "id": "c2e", "text": "Hoje: {reels} {videos}. O koi tá contando." },
+      { "id": "c2f", "text": "{min} min de feed até aqui." },
+      { "id": "c2g", "text": "{nth} vez. O koi lembra das outras." },
+      { "id": "c2h", "text": "{reels} {videos} hoje. Tá subindo." }
+    ],
+    "prompt.context.l3": [
+      { "id": "c3a", "text": "{reels} {videos} hoje. O koi tá ficando tonto." },
+      { "id": "c3b", "text": "{min} min de feed hoje. O koi perdeu a conta das voltas." },
+      { "id": "c3c", "text": "{reels} {videos}. A água do lago tá turva." },
+      { "id": "c3d", "text": "O koi tá nadando em círculos. {reels} hoje." },
+      { "id": "c3e", "text": "{reels} {videos} e contando. O koi pediu água." },
+      { "id": "c3f", "text": "{min} min. O koi deitou de lado." },
+      { "id": "c3g", "text": "O koi tá zonzo de tanto {videos}." },
+      { "id": "c3h", "text": "{reels} hoje. O koi tá decepcionado, mas não surpreso." },
+      { "id": "c3i", "text": "{reels} {videos} e já é madrugada. O koi bocejou.", "when": { "daypart": [ "madrugada" ] } }
+    ],
+    "prompt.context.expiry": [
+      { "id": "ce1", "text": "Você viu {seen} {videos} nesses {m} min." },
+      { "id": "ce2", "text": "{seen} {videos} em {m} min." },
+      { "id": "ce3", "text": "Saldo: {seen} {videos}." },
+      { "id": "ce4", "text": "Deu {seen} {videos} nesse tempo." },
+      { "id": "ce5", "text": "{seen} {videos} depois, o koi pergunta de novo." },
+      { "id": "ce6", "text": "Foram {seen}. O koi anotou." },
+      { "id": "ce7", "text": "{m} min, {seen} {videos}." },
+      { "id": "ce8", "text": "Rendeu {seen} {videos}." }
+    ],
+    "prompt.praise": [
+      { "id": "pr1", "text": "Boa. Mais uma pro koi." },
+      { "id": "pr2", "text": "{dth} recusa hoje. O koi tá orgulhoso." },
+      { "id": "pr3", "text": "Os stories continuam lá." },
+      { "id": "pr4", "text": "O koi deu uma voltinha de felicidade." },
+      { "id": "pr5", "text": "Feed: 0. Você: 1." },
+      { "id": "pr6", "text": "Saímos dos {videos} pra você." },
+      { "id": "pr7", "text": "O koi viu. E gostou." },
+      { "id": "pr8", "text": "Essa foi fácil, né?" },
+      { "id": "pr9", "text": "{dth} vez que você diz não hoje." },
+      { "id": "pr10", "text": "Vai dormir, que amanhã tem mais.", "when": { "daypart": [ "madrugada" ] } },
+      { "id": "pr11", "text": "O koi bateu palminha com a barbatana.", "weight": 0.05 }
+    ],
+    "morning.below": [
+      { "id": "mb1", "text": "Ontem: {n} vídeos, {t}. {p}% menos que sua média." },
+      { "id": "mb2", "text": "Ontem: {n} vídeos. {p}% abaixo da sua média. {koi} reparou." },
+      { "id": "mb3", "text": "{n} vídeos ontem, {p}% a menos que o normal. Bom começo de dia." },
+      { "id": "mb4", "text": "Ontem ficou em {n} vídeos ({t}). Abaixo da sua média." }
+    ],
+    "morning.above": [
+      { "id": "ma1", "text": "Ontem: {n} vídeos. Acima da sua média. Hoje é outro dia." },
+      { "id": "ma2", "text": "Ontem: {n} vídeos, {t}. Passou da média. Hoje {koi} tá de olho." },
+      { "id": "ma3", "text": "{n} vídeos ontem. Acima do seu normal. Dia novo, água nova." }
+    ],
+    "morning.zero": [
+      { "id": "mz1", "text": "Ontem: zero vídeos. {koi} nem acredita." },
+      { "id": "mz2", "text": "Zero vídeos ontem. {koi} conferiu duas vezes." }
+    ],
+    "morning.plain": [
+      { "id": "mp1", "text": "Ontem: {n} vídeos, {t}." },
+      { "id": "mp2", "text": "Ontem foram {n} vídeos ({t} de feed)." }
+    ],
+    "morning.streak": [
+      { "id": "ms1", "text": "{d} dias seguidos abaixo da média." },
+      { "id": "ms2", "text": "Já são {d} dias seguidos abaixo da média." }
+    ],
+    "preview.peak": [
+      { "id": "pp1", "text": "{koi} já descobriu seu horário de pico. Conta no fim." },
+      { "id": "pp2", "text": "{koi} já sabe a que horas a correnteza aperta. Segredo até o fim do diagnóstico." }
+    ],
+    "preview.tomorrow": [
+      { "id": "pt1", "text": "Amanhã sai seu diagnóstico." },
+      { "id": "pt2", "text": "Amanhã {koi} conta tudo o que viu." }
+    ],
+    "peak.body": [
+      { "id": "pk1", "text": "Seu horário de pico começa em 15 min. Quer que {koi} pergunte antes, hoje?" },
+      { "id": "pk2", "text": "Daqui a 15 min começa o seu horário de mais vídeos. {koi} pode perguntar antes, só hoje." }
+    ],
+    "orb.arc.cinema.1": [
+      { "id": "c1", "text": "{koi} pegou um lugar na primeira fila." },
+      { "id": "c1m", "text": "Sessão da madrugada. {koi} pegou um lugar na primeira fila.", "when": { "daypart": [ "madrugada" ] } }
+    ],
+    "orb.arc.cinema.2": [
+      { "id": "c2", "text": "{koi} foi buscar pipoca." }
+    ],
+    "orb.arc.cinema.3": [
+      { "id": "c3", "text": "A pipoca acabou. {koi} tá pensando em buscar mais." }
+    ],
+    "orb.arc.cinema.4": [
+      { "id": "c4", "text": "{koi} cochilou na poltrona." },
+      { "id": "c4m", "text": "{koi} cochilou na poltrona. Já são altas horas.", "when": { "daypart": [ "madrugada" ] } }
+    ],
+    "orb.arc.ansiedade.1": [
+      { "id": "a1", "text": "{koi} tá roendo a barbatana." }
+    ],
+    "orb.arc.ansiedade.2": [
+      { "id": "a2", "text": "{koi} já roeu as duas." }
+    ],
+    "orb.arc.ansiedade.3": [
+      { "id": "a3", "text": "{koi} começou na cauda. Preocupante." }
+    ],
+    "orb.arc.ansiedade.4": [
+      { "id": "a4", "text": "{koi} tá respirando num saquinho de papel." }
+    ],
+    "orb.arc.relogio.1": [
+      { "id": "r1", "text": "{koi} olhou o relógio." },
+      { "id": "r1m", "text": "{koi} olhou o relógio. Era pra estar dormindo.", "when": { "daypart": [ "madrugada" ] } }
+    ],
+    "orb.arc.relogio.2": [
+      { "id": "r2", "text": "{koi} olhou o relógio de novo. Peixe nem usa relógio." }
+    ],
+    "orb.arc.relogio.3": [
+      { "id": "r3", "text": "{koi} perguntou se você tem compromisso amanhã." }
+    ],
+    "orb.arc.relogio.4": [
+      { "id": "r4", "text": "{koi} desmarcou os compromissos dele por você." }
+    ],
+    "orb.arc.musica.1": [
+      { "id": "m1", "text": "{koi} já reconhece esse áudio." }
+    ],
+    "orb.arc.musica.2": [
+      { "id": "m2", "text": "{koi} aprendeu a coreografia." }
+    ],
+    "orb.arc.musica.3": [
+      { "id": "m3", "text": "{koi} tá ensaiando a coreografia com a família." }
+    ],
+    "orb.arc.musica.4": [
+      { "id": "m4", "text": "{koi} montou uma banda cover dos áudios do feed." }
+    ],
+    "orb.session.generic": [
+      { "id": "g1", "text": "{t} de feed. {koi} tá aqui, firme." },
+      { "id": "g2", "text": "{koi} trouxe um travesseiro." },
+      { "id": "g3", "text": "{t}. {koi} pediu uma pizza." },
+      { "id": "g4", "text": "{koi} começou a contar as escamas." },
+      { "id": "g5", "text": "{t} de feed. {koi} montou uma barraca." },
+      { "id": "g6", "text": "Madrugada. {koi} já tá de pijama.", "when": { "daypart": [ "madrugada" ] } }
+    ],
+    "orb.milestone.50": [
+      { "id": "ml50", "text": "50 hoje." }
+    ],
+    "orb.milestone.100": [
+      { "id": "ml100", "text": "100º vídeo. {koi} fez um bolo." },
+      { "id": "ml100b", "text": "100 hoje. {koi} acendeu uma vela." }
+    ],
+    "orb.milestone.200": [
+      { "id": "ml200", "text": "200. {koi} parou de contar nos dedos." },
+      { "id": "ml200b", "text": "200 hoje. {koi} pediu reforço." }
+    ],
+    "peak.offline": [
+      { "id": "po1", "text": "Seu horário de pico tá começando. Que tal fazer algo que você queria fazer faz tempo?" },
+      { "id": "po2", "text": "Começou o seu horário de mais vídeos. {koi} sugere: larga o celular por meia hora e vê o que acontece." },
+      { "id": "po3", "text": "Hora de pico. Bom momento pra fazer qualquer coisa que não caiba numa tela." }
+    ],
+    "peak.offline.sleep": [
+      { "id": "pos1", "text": "Seu horário de pico tá começando. Que tal já ir se ajeitando pra dormir?" },
+      { "id": "pos2", "text": "Começou o horário em que a correnteza aperta. {koi} sugere: celular longe da cama hoje." }
+    ],
+    "peak.offline.focus": [
+      { "id": "pof1", "text": "Seu horário de pico tá começando. Que tal pegar aquilo que você queria terminar?" },
+      { "id": "pof2", "text": "Hora de pico. {koi} sugere 25 minutos de foco, celular virado pra baixo." }
+    ],
+    "peak.offline.people": [
+      { "id": "pop1", "text": "Seu horário de pico tá começando. Que tal mandar mensagem pra alguém, ou melhor, ligar?" },
+      { "id": "pop2", "text": "Hora de pico. {koi} sugere: tempo com quem tá perto, sem tela no meio." }
+    ],
+    "peak.offline.me": [
+      { "id": "pom1", "text": "Seu horário de pico tá começando. Que tal um tempo só seu, longe do celular?" },
+      { "id": "pom2", "text": "Hora de pico. {koi} sugere: um livro, uma caminhada, um café sem pressa." }
+    ]
+  }
+}
