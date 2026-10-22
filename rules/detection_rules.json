@@ -1,0 +1,35 @@
+{
+  "_doc": "Regras de detecção (docs/08). schema: o formato (o app só aceita o que entende). version: sobe a cada correção. Publicado em docs/rules/detection_rules.json (o app baixa de lá; RulesStore.kt) e igual a esta cópia, embutida no app.",
+  "schema": 1,
+  "version": 2,
+  "instagram": {
+    "feedPager": "clips_viewer_view_pager",
+    "dmMarkers": ["sender_username_or_fullname", "sender_timestamp"],
+    "dmThread": "message_list",
+    "tabs": {
+      "clips_tab": "reels_tab",
+      "feed_tab": "feed",
+      "search_tab": "explore",
+      "direct_tab": "other",
+      "profile_tab": "other"
+    }
+  },
+  "youtube": {
+    "feed": "reel_recycler",
+    "swipe": "reel_player_underlay",
+    "swipeBurstMs": 500,
+    "_swipeDoc": "Troca de Short: rajada (eventos a menos de swipeBurstMs) do reel_player_underlay em que scrollY ou a posição de antes (scrollY - scrollDeltaY; o evento do salto às vezes se perde) chega a -swipeMinJump. Desistir no meio só sobe e volta a 0, sem o salto negativo (docs/08).",
+    "swipeMinJump": 300,
+    "pivotBar": "pivot_bar",
+    "_promptDoc": "O aviso no YouTube é uma janela sobreposta (uma tela nova minimizava o Short). pauseTap: onde tocar para pausar e retomar o Short, em frações da tela (x, y). Área só de vídeo: longe do botão de play (centro), da coluna de curtir/comentar (direita), da legenda e do Inscreva-se (embaixo) e da barra de cima. O player não aceita clique de acessibilidade.",
+    "pauseTap": [0.35, 0.3],
+    "pivotSources": {
+      "0": "feed",
+      "1": "reels_tab"
+    }
+  },
+  "exit": {
+    "instagram": { "reels_tab": "tab:feed_tab", "default": "back" },
+    "youtube": { "reels_tab": "pivot:0", "default": "back" }
+  }
+}
