@@ -1,5 +1,5 @@
 {
-  "_doc": "Regras de detecção (docs/08). schema: o formato (o app só aceita o que entende). version: sobe a cada correção. Publicado em docs/rules/detection_rules.json (o app baixa de lá; RulesStore.kt) e igual a esta cópia, embutida no app.",
+  "_doc": "Regras de detecção (docs/08). schema: o formato (o app só aceita o que entende). version: sobe a cada correção. Cópia igual em docs/rules/, publicada no site (tools/publish_site.sh → koi-site, de onde o app baixa; RulesStore.kt).",
   "schema": 1,
   "version": 2,
   "instagram": {
