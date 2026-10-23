@@ -1,8 +1,41 @@
 {
   "_doc": "Falas do koi (docs/03-marca.md, Variação e personalização). Cada momento é um banco: o seletor (CopySelector.kt) não repete nos últimos 7 dias e, com o banco esgotado, volta à usada há mais tempo. Variáveis entre chaves; 'when' limita a variação a um contexto (daypart: madrugada|manha|tarde|noite, app: instagram|youtube, weekend: true|false); 'weight' muda a chance (raridades ~0,05). schema: o formato; version: sobe a cada mudança. Cópia igual em docs/copy/, publicada no site (tools/publish_site.sh); o app baixa de lá e usa se a version for maior que a embutida (RemoteCopy.kt). Arcos da sessão longa: todo orb.arc.<nome>.1 a .4.",
   "schema": 1,
-  "version": 4,
+  "version": 5,
   "moments": {
+    "notify.service_off.title": [
+      { "id": "nsot1", "text": "O koi tá de olhos fechados." }
+    ],
+    "notify.service_off.body": [
+      { "id": "nsob1", "text": "O serviço de acessibilidade foi desligado. Nada está sendo contado." }
+    ],
+    "notify.diagnosis_ready.title": [
+      { "id": "ndrt1", "text": "Seu diagnóstico ficou pronto." }
+    ],
+    "notify.diagnosis_ready.body": [
+      { "id": "ndrb1", "text": "O koi viu tudo. Toca pra ver." }
+    ],
+    "notify.morning.title": [
+      { "id": "nmt1", "text": "Bom dia" }
+    ],
+    "notify.preview.title": [
+      { "id": "npt1", "text": "Diagnóstico" }
+    ],
+    "notify.peak.title": [
+      { "id": "npt1", "text": "Horário de pico" }
+    ],
+    "notify.peak_offline.title": [
+      { "id": "npot1", "text": "Seu horário de pico" }
+    ],
+    "action.ask_today": [
+      { "id": "aat1", "text": "Perguntar hoje" }
+    ],
+    "action.ok": [
+      { "id": "ao1", "text": "Tô de boa" }
+    ],
+    "action.exit": [
+      { "id": "ae1", "text": "Sair" }
+    ],
     "limit.title.videos": [
       { "id": "lv1", "text": "Deu {n} {videos} por hoje." },
       { "id": "lv2", "text": "Os {n} {videos} de hoje acabaram." },
