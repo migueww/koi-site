@@ -1,8 +1,34 @@
 {
   "_doc": "Falas do koi (docs/03-marca.md, Variação e personalização). Cada momento é um banco: o seletor (CopySelector.kt) não repete nos últimos 7 dias e, com o banco esgotado, volta à usada há mais tempo. Variáveis entre chaves; 'when' limita a variação a um contexto (daypart: madrugada|manha|tarde|noite, app: instagram|youtube, weekend: true|false); 'weight' muda a chance (raridades ~0,05). schema: o formato; version: sobe a cada mudança. Cópia igual em docs/copy/, publicada no site (tools/publish_site.sh); o app baixa de lá e usa se a version for maior que a embutida (RemoteCopy.kt). Arcos da sessão longa: todo orb.arc.<nome>.1 a .4.",
   "schema": 1,
-  "version": 3,
+  "version": 4,
   "moments": {
+    "limit.title.videos": [
+      { "id": "lv1", "text": "Deu {n} {videos} por hoje." },
+      { "id": "lv2", "text": "Os {n} {videos} de hoje acabaram." },
+      { "id": "lv3", "text": "Chegou no combinado: {n} {videos}." },
+      { "id": "lv4", "text": "{n} {videos}. Era esse o combinado." },
+      { "id": "lv5", "text": "Limite de hoje batido: {n} {videos}." }
+    ],
+    "limit.title.minutes": [
+      { "id": "lm1", "text": "Seus {n} min de hoje acabaram." },
+      { "id": "lm2", "text": "Deu {n} min de feed por hoje." },
+      { "id": "lm3", "text": "Os {n} min combinados já foram." },
+      { "id": "lm4", "text": "{n} min. Era esse o combinado." }
+    ],
+    "limit.title.block": [
+      { "id": "lb1", "text": "Agora é hora sem {videos}." },
+      { "id": "lb2", "text": "Esse horário é sem {videos}." },
+      { "id": "lb3", "text": "Combinado: nada de {videos} agora." },
+      { "id": "lb4", "text": "O koi tá de folga dos {videos} agora." }
+    ],
+    "limit.context": [
+      { "id": "lc1", "text": "Hoje: {reels} {videos} · {min} min" },
+      { "id": "lc2", "text": "Amanhã o placar zera." },
+      { "id": "lc3", "text": "O koi segura as pontas até amanhã." },
+      { "id": "lc4", "text": "Você que combinou. O koi só lembra." },
+      { "id": "lc5", "text": "{reels} {videos} hoje. Tá bom assim." }
+    ],
     "prompt.title.tab": [
       { "id": "tab1", "text": "Vai ver {videos} agora?" },
       { "id": "tab2", "text": "Entrar nos {videos}?" },
@@ -40,6 +66,18 @@
       { "id": "vid7", "text": "O vídeo que você queria já passou. Continua?" },
       { "id": "vid8", "text": "Rolou pro próximo. Foi sem querer?" },
       { "id": "vid9", "text": "Esse não era o que você abriu. Fica?" }
+    ],
+    "prompt.title.checkin": [
+      { "id": "ci1", "text": "Mais {n} {videos}. Continuar?" },
+      { "id": "ci2", "text": "Lá se foram mais {n}. Segue?" },
+      { "id": "ci3", "text": "{n} {videos} depois… ainda quer?" },
+      { "id": "ci4", "text": "Passaram mais {n}. Tá valendo a pena?" },
+      { "id": "ci5", "text": "Mais {n} na conta. Continua?" },
+      { "id": "ci6", "text": "Checagem rápida: mais {n} {videos}. Segue ou para?" },
+      { "id": "ci7", "text": "O koi contou mais {n}. E aí?" },
+      { "id": "ci8", "text": "Mais {n} {videos} se foram. Continuar mesmo?" },
+      { "id": "ci9", "text": "Pausa pra pensar: mais {n}. Segue?" },
+      { "id": "ci10", "text": "+{n} {videos}. Ainda é isso que você quer?" }
     ],
     "prompt.title.insist": [
       { "id": "ins1", "text": "É a {nth} vez hoje. Ainda quer?" },
