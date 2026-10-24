@@ -1,7 +1,7 @@
 {
   "_doc": "Falas do koi (docs/03-marca.md, Variação e personalização). Cada momento é um banco: o seletor (CopySelector.kt) não repete nos últimos 7 dias e, com o banco esgotado, volta à usada há mais tempo. Variáveis entre chaves; 'when' limita a variação a um contexto (daypart: madrugada|manha|tarde|noite, app: instagram|youtube, weekend: true|false); 'weight' muda a chance (raridades ~0,05). schema: o formato; version: sobe a cada mudança. Cópia igual em docs/copy/, publicada no site (tools/publish_site.sh); o app baixa de lá e usa se a version for maior que a embutida (RemoteCopy.kt). Arcos da sessão longa: todo orb.arc.<nome>.1 a .4.",
   "schema": 1,
-  "version": 7,
+  "version": 8,
   "moments": {
     "notify.service_off.title": [
       { "id": "nsot1", "text": "O koi tá de olhos fechados." }
@@ -36,6 +36,44 @@
       { "id": "wb3", "text": "Sete dias depois, {koi} tem um resumo pra você." },
       { "id": "wb4", "text": "Seu relatório da semana chegou. Leva um minuto." },
       { "id": "wb5", "text": "A semana acabou. {koi} anotou tudo." }
+    ],
+    "day.today": [
+      { "id": "dt1", "text": "O dia ainda tá aberto." },
+      { "id": "dt2", "text": "{koi} ainda tá pintando hoje." },
+      { "id": "dt3", "text": "Hoje ainda não secou." }
+    ],
+    "day.blank": [
+      { "id": "db1", "text": "{koi} não viu esse dia." },
+      { "id": "db2", "text": "Papel em branco: {koi} não tava olhando." }
+    ],
+    "day.diagnosis": [
+      { "id": "dd1", "text": "Dia de observação: {koi} tava estudando a correnteza." },
+      { "id": "dd2", "text": "Nesse dia, {koi} só observou." }
+    ],
+    "day.level5": [
+      { "id": "d5a", "text": "Zero. Um dia inteiro fora da correnteza." },
+      { "id": "d5b", "text": "{koi} guardou esse: nenhum vídeo." },
+      { "id": "d5c", "text": "Papel quase todo de tinta. Dia raro." }
+    ],
+    "day.level4": [
+      { "id": "d4a", "text": "Menos da metade do diagnóstico. Dia forte." },
+      { "id": "d4b", "text": "{koi} nadou contra a correnteza o dia todo." },
+      { "id": "d4c", "text": "Tinta firme. Bom dia." }
+    ],
+    "day.level3": [
+      { "id": "d3a", "text": "Abaixo do diagnóstico. É isso." },
+      { "id": "d3b", "text": "Um dia melhor que o começo." },
+      { "id": "d3c", "text": "{koi} segurou bem." }
+    ],
+    "day.level2": [
+      { "id": "d2a", "text": "Perto do diagnóstico. Dia comum." },
+      { "id": "d2b", "text": "A correnteza puxou um pouco." },
+      { "id": "d2c", "text": "Traço leve. Amanhã é outro." }
+    ],
+    "day.level1": [
+      { "id": "d1a", "text": "Dia de correnteza forte. Acontece." },
+      { "id": "d1b", "text": "Traço claro. Ainda é um traço." },
+      { "id": "d1c", "text": "{koi} foi levado um pouco. Amanhã é outro dia." }
     ],
     "action.ask_today": [
       { "id": "aat1", "text": "Perguntar hoje" }
