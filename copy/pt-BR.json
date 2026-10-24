@@ -1,7 +1,7 @@
 {
   "_doc": "Falas do koi (docs/03-marca.md, Variação e personalização). Cada momento é um banco: o seletor (CopySelector.kt) não repete nos últimos 7 dias e, com o banco esgotado, volta à usada há mais tempo. Variáveis entre chaves; 'when' limita a variação a um contexto (daypart: madrugada|manha|tarde|noite, app: instagram|youtube, weekend: true|false); 'weight' muda a chance (raridades ~0,05). schema: o formato; version: sobe a cada mudança. Cópia igual em docs/copy/, publicada no site (tools/publish_site.sh); o app baixa de lá e usa se a version for maior que a embutida (RemoteCopy.kt). Arcos da sessão longa: todo orb.arc.<nome>.1 a .4.",
   "schema": 1,
-  "version": 6,
+  "version": 7,
   "moments": {
     "notify.service_off.title": [
       { "id": "nsot1", "text": "O koi tá de olhos fechados." }
@@ -85,7 +85,7 @@
       { "id": "tab10", "text": "Nem tirou o café da mesa e já {videos}?", "when": { "daypart": ["manha"] } },
       { "id": "tab11", "text": "{videos} de madrugada?", "when": { "daypart": [ "madrugada" ] } },
       { "id": "tab12", "text": "Shorts antes de dormir?", "when": { "daypart": ["noite", "madrugada"], "app": "youtube" } },
-      { "id": "tab13", "text": "Domingo pede reels, né?", "when": { "weekend": true, "app": "instagram" } },
+      { "id": "tab13", "text": "Fim de semana pede reels, né?", "when": { "weekend": true, "app": "instagram" } },
       { "id": "tab14", "text": "O koi fingiu que não viu. Vai mesmo?", "weight": 0.05 }
     ],
     "prompt.title.dm": [
@@ -197,7 +197,10 @@
       { "id": "pr8", "text": "Essa foi fácil, né?" },
       { "id": "pr9", "text": "{dth} vez que você diz não hoje." },
       { "id": "pr10", "text": "Vai dormir, que amanhã tem mais.", "when": { "daypart": [ "madrugada" ] } },
-      { "id": "pr11", "text": "O koi bateu palminha com a barbatana.", "weight": 0.05 }
+      { "id": "pr11", "text": "O koi bateu palminha com a barbatana.", "weight": 0.05 },
+      { "id": "pr12", "text": "Fechou. O feed fica pra depois." },
+      { "id": "pr13", "text": "Pronto. Tá livre." },
+      { "id": "pr14", "text": "O koi não vai fazer festa. Mas pensou.", "weight": 0.05 }
     ],
     "morning.below": [
       { "id": "mb1", "text": "Ontem: {n} vídeos, {t}. {p}% menos que sua média." },
@@ -271,7 +274,7 @@
       { "id": "r3", "text": "{koi} perguntou se você tem compromisso amanhã." }
     ],
     "orb.arc.relogio.4": [
-      { "id": "r4", "text": "{koi} desmarcou os compromissos dele por você." }
+      { "id": "r4", "text": "{koi} desmarcou os compromissos por você." }
     ],
     "orb.arc.musica.1": [
       { "id": "m1", "text": "{koi} já reconhece esse áudio." }
@@ -294,15 +297,19 @@
       { "id": "g6", "text": "Madrugada. {koi} já tá de pijama.", "when": { "daypart": [ "madrugada" ] } }
     ],
     "orb.milestone.50": [
-      { "id": "ml50", "text": "50 hoje." }
+      { "id": "ml50", "text": "50 hoje." },
+      { "id": "ml50b", "text": "50. {koi} esperava menos." },
+      { "id": "ml50c", "text": "50 hoje. {koi} já perdeu a conta. Brincadeira, foram 50." }
     ],
     "orb.milestone.100": [
-      { "id": "ml100", "text": "100º vídeo. {koi} fez um bolo." },
-      { "id": "ml100b", "text": "100 hoje. {koi} acendeu uma vela." }
+      { "id": "ml100", "text": "100 hoje. {koi} não vai fazer bolo." },
+      { "id": "ml100b", "text": "100. {koi} contou duas vezes pra ter certeza." },
+      { "id": "ml100c", "text": "100. {koi} tá torcendo pra ser engano." }
     ],
     "orb.milestone.200": [
-      { "id": "ml200", "text": "200. {koi} parou de contar nos dedos." },
-      { "id": "ml200b", "text": "200 hoje. {koi} pediu reforço." }
+      { "id": "ml200", "text": "200. {koi} desistiu de fingir que não tá vendo." },
+      { "id": "ml200b", "text": "200. {koi} ficou de boca aberta. Mais que o normal." },
+      { "id": "ml200c", "text": "200 hoje. {koi} ficou sem comentário." }
     ],
     "peak.offline": [
       { "id": "po1", "text": "Seu horário de pico tá começando. Que tal fazer algo que você queria fazer faz tempo?" },
