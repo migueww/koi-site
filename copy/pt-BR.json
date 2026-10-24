@@ -1,7 +1,7 @@
 {
   "_doc": "Falas do koi (docs/03-marca.md, Variação e personalização). Cada momento é um banco: o seletor (CopySelector.kt) não repete nos últimos 7 dias e, com o banco esgotado, volta à usada há mais tempo. Variáveis entre chaves; 'when' limita a variação a um contexto (daypart: madrugada|manha|tarde|noite, app: instagram|youtube, weekend: true|false); 'weight' muda a chance (raridades ~0,05). schema: o formato; version: sobe a cada mudança. Cópia igual em docs/copy/, publicada no site (tools/publish_site.sh); o app baixa de lá e usa se a version for maior que a embutida (RemoteCopy.kt). Arcos da sessão longa: todo orb.arc.<nome>.1 a .4.",
   "schema": 1,
-  "version": 8,
+  "version": 9,
   "moments": {
     "notify.service_off.title": [
       { "id": "nsot1", "text": "O koi tá de olhos fechados." }
@@ -369,6 +369,19 @@
     "peak.offline.me": [
       { "id": "pom1", "text": "Seu horário de pico tá começando. Que tal um tempo só seu, longe do celular?" },
       { "id": "pom2", "text": "Hora de pico. {koi} sugere: um livro, uma caminhada, um café sem pressa." }
+    ],
+    "breath.open": [
+      { "id": "bro1", "text": "Respira. 10 segundos. O feed não vai fugir." },
+      { "id": "bro2", "text": "{koi} achou um remanso. Fica aqui 10 segundos." },
+      { "id": "bro3", "text": "Pausa rápida. O próximo vídeo espera." },
+      { "id": "bro4", "text": "10 segundos sem rolar. Só respira." },
+      { "id": "bro5", "text": "A água parou um instante. Respira junto com {koi}." }
+    ],
+    "breath.done": [
+      { "id": "brd1", "text": "Pronto. Pode voltar." },
+      { "id": "brd2", "text": "Feito. O feed tá aí, se quiser." },
+      { "id": "brd3", "text": "Respirou. Agora a escolha é sua." },
+      { "id": "brd4", "text": "{koi} voltou a nadar. E você?" }
     ]
   }
 }
