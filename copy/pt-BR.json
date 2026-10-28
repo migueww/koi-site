@@ -1,7 +1,7 @@
 {
   "_doc": "Falas do koi (docs/03-marca.md, Variação e personalização). Cada momento é um banco: o seletor (CopySelector.kt) não repete nos últimos 7 dias e, com o banco esgotado, volta à usada há mais tempo. Variáveis entre chaves; 'when' limita a variação a um contexto (daypart: madrugada|manha|tarde|noite, app: instagram|youtube, weekend: true|false); 'weight' muda a chance (raridades ~0,05). schema: o formato; version: sobe a cada mudança. Cópia igual em docs/copy/, publicada no site (tools/publish_site.sh); o app baixa de lá e usa se a version for maior que a embutida (RemoteCopy.kt). Arcos da sessão longa: todo orb.arc.<nome>.1 a .4.",
   "schema": 1,
-  "version": 10,
+  "version": 11,
   "moments": {
     "notify.service_off.title": [
       { "id": "nsot1", "text": "O koi tá de olhos fechados." }
@@ -41,6 +41,14 @@
     ],
     "notify.weekly.title": [
       { "id": "nwt1", "text": "Sua semana" }
+    ],
+    "notify.comeback.title": [
+      { "id": "ncbt1", "text": "{koi} sentiu sua falta." },
+      { "id": "ncbt2", "text": "O lago tá quieto sem você." }
+    ],
+    "notify.comeback.body": [
+      { "id": "ncbb1", "text": "{koi} contou {n} vídeos essa semana. Passa no lago?" },
+      { "id": "ncbb2", "text": "Essa semana foram {n} vídeos. {koi} guardou tudo pra você ver." }
     ],
     "weekly.body": [
       { "id": "wb1", "text": "Saiu o relatório da semana. {koi} tem umas coisas pra te mostrar." },
@@ -275,6 +283,10 @@
       { "id": "ms1", "text": "{d} dias seguidos abaixo da média." },
       { "id": "ms2", "text": "Já são {d} dias seguidos abaixo da média." }
     ],
+    "morning.streak_goal": [
+      { "id": "msg1", "text": "{d} dias seguidos dentro da meta." },
+      { "id": "msg2", "text": "Já são {d} dias dentro da meta. O lago agradece." }
+    ],
     "preview.peak": [
       { "id": "pp1", "text": "{koi} já descobriu seu horário de pico. Conta no fim." },
       { "id": "pp2", "text": "{koi} já sabe a que horas a correnteza aperta. Segredo até o fim do diagnóstico." }
@@ -282,6 +294,15 @@
     "preview.tomorrow": [
       { "id": "pt1", "text": "Amanhã sai seu diagnóstico." },
       { "id": "pt2", "text": "Amanhã {koi} conta tudo o que viu." }
+    ],
+    "preview.count": [
+      { "id": "pc1", "text": "{koi} anotou tudo de ontem. O resto é segredo até o relatório." },
+      { "id": "pc2", "text": "{koi} segue anotando. Faltam {d} dias pro seu relatório." },
+      { "id": "pc3", "text": "Mais um dia no caderno de {koi}. Sem julgamento, só anotando." }
+    ],
+    "preview.guess": [
+      { "id": "pg1", "text": "{koi} já sabe se o seu chute bateu. Conta em {d} dias." },
+      { "id": "pg2", "text": "Seu chute contra a realidade: {koi} já tem a resposta. Faltam {d} dias." }
     ],
     "peak.body": [
       { "id": "pk1", "text": "Seu horário de pico começa em 15 min. Quer que {koi} pergunte antes, hoje?" },
