@@ -1,7 +1,7 @@
 {
   "_doc": "Falas do koi (docs/03-marca.md, Variação e personalização). Cada momento é um banco: o seletor (CopySelector.kt) não repete nos últimos 7 dias e, com o banco esgotado, volta à usada há mais tempo. Variáveis entre chaves; 'when' limita a variação a um contexto (daypart: madrugada|manha|tarde|noite, app: instagram|youtube, weekend: true|false); 'weight' muda a chance (raridades ~0,05). schema: o formato; version: sobe a cada mudança. Cópia igual em docs/copy/, publicada no site (tools/publish_site.sh); o app baixa de lá e usa se a version for maior que a embutida (RemoteCopy.kt). Arcos da sessão longa: todo orb.arc.<nome>.1 a .4.",
   "schema": 1,
-  "version": 11,
+  "version": 12,
   "moments": {
     "notify.service_off.title": [
       { "id": "nsot1", "text": "O koi tá de olhos fechados." }
@@ -366,6 +366,10 @@
       { "id": "g4", "text": "{koi} começou a contar as escamas." },
       { "id": "g5", "text": "{t} de feed. {koi} montou uma barraca." },
       { "id": "g6", "text": "Madrugada. {koi} já tá de pijama.", "when": { "daypart": [ "madrugada" ] } }
+    ],
+    "orb.hello": [
+      { "id": "oh1", "text": "Esse sou eu contando. Pode arrastar." },
+      { "id": "oh2", "text": "Oi. Sou eu, contando os vídeos. Se incomodar, me arrasta pro canto." }
     ],
     "orb.milestone.50": [
       { "id": "ml50", "text": "50 hoje." },
